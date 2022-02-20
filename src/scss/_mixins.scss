@@ -1,0 +1,26 @@
+//breakpoints 1024/16px base font size = 64em
+@media (min-width: 64em) {
+    //styles go here
+}
+
+//sass map
+/* 640px/16 = 40em 
+1024/16 = 64
+1400/16 = 87.5
+*/
+//640px, 1024px, 1400px
+$breakpoints-up: ("medium": "40em", "large": "64em", "xlarge": "87.5em");
+//
+$breakpoints-down: ("small": "39.9375em", "medium": "63.9375em", "large": "87.4375em");
+
+@mixin breakpoint-up($size){
+    @media (min-width: map-get($breakpoints-up, $size)) {
+        @content;
+    }
+}
+
+@mixin breakpoint-down($size){
+    @media (max-width: map-get($breakpoints-down, $size)) {
+        @content;
+    }
+}

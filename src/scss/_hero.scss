@@ -1,0 +1,62 @@
+.hero {
+    @include breakpoint-up(large){
+        display: flex;
+   
+        align-items: center;
+    }
+    &__image {
+        flex: 1;
+        //border: 1px solid magenta;
+        position: relative; //must be present to allow for position absolute in ::before
+        background-image: url('../../dist/img/bg-intro-mobile.svg');
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center center;
+        min-height: 25.94rem; //280px/16 base font = 17.5rem
+
+        @include breakpoint-up(large){
+            flex: 3;
+            order: 2;
+            height: 41rem;
+            background-image: url('../../dist/img/bg-intro-desktop.svg');
+            background-position: left center ;
+           
+        }
+
+        &::before {
+            content: "";
+            position: absolute;
+            background-image: url('../../dist/img/image-mockups.png');
+            height: 100%;
+            width: 100%;
+            background-size: 94%;
+            background-repeat: no repeat;
+            background-position: center bottom;
+        }
+
+    }
+
+    &__text {
+        flex:2;
+        text-align: center;
+        order: 1;
+
+        h1 {
+            font-weight: 300;
+            font-size: 2.31rem;
+            line-height: 1.15;
+            color: $darkBlue;
+            margin-bottom: 1.5rem;
+        }
+
+        p {
+            line-height: 1.5;
+            margin-bottom:2.25rem
+        }
+
+        .button {
+            color: $white;
+        }
+
+    }
+}
