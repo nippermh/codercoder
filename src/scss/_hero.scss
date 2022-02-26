@@ -1,45 +1,92 @@
+//Mark Hallam
+
 .hero {
-    @include breakpoint-up(large){
+    background-color: $veryLightGray;
+
+    .container {
+  
+      @include breakpoint-up(large){    
         display: flex;
-   
         align-items: center;
+      }
     }
+
     &__image {
-        flex: 1;
-        //border: 1px solid magenta;
-        position: relative; //must be present to allow for position absolute in ::before
+        position: relative;
         background-image: url('../../dist/img/bg-intro-mobile.svg');
         background-size: cover;
         background-repeat: no-repeat;
         background-position: center center;
-        min-height: 25.94rem; //280px/16 base font = 17.5rem
+        min-height: 17.5rem; //280px/16 base font = 17.5rem
 
-        @include breakpoint-up(large){
+        @include breakpoint-up(medium){
+            min-height: 25rem;
+            background-position: center 70%;
+        }
+
+        @include breakpoint-up(large){ //64em
             flex: 3;
             order: 2;
-            height: 41rem;
-            background-image: url('../../dist/img/bg-intro-desktop.svg');
-            background-position: left center ;
+            height: 41rem; //was 42
+            background-image: none;
+            //background-image: url('../../dist/img/bg-intro-desktop.svg');
+            //background-position: left center ;
            
         }
+      
 
         &::before {
+
+            @include breakpoint-up(large){
+                content: "";
+                position: absolute;
+                height: 100%;
+                background-image: url('../../dist/img/bg-intro-desktop.svg');
+                background-repeat: no-repeat;
+                background-position: center bottom;
+                width: 150%;
+                background-size: 122%;
+                background-position: 0% 83%;
+            }
+        }
+     /*    @include breakpoint-up(medium){
+            background-size: 52%;
+            }     */
+
+
+        &::after{
             content: "";
             position: absolute;
-            background-image: url('../../dist/img/image-mockups.png');
             height: 100%;
             width: 100%;
-            background-size: 94%;
-            background-repeat: no repeat;
+            background-image: url('../../dist/img/image-mockups.png');
+            background-size: 93%;
+            background-repeat: no-repeat;
             background-position: center bottom;
+
+   
+            @include breakpoint-up(medium){
+                background-size: 52%;
+              }
+        
+              @include breakpoint-up(large){
+                width: 120%;
+                height: 122%;
+                background-size: 94%;
+                background-position: center 100%;
+             //   left: 22%;
+              }
+            }
         }
 
-    }
-
     &__text {
-        flex:2;
         text-align: center;
-        order: 1;
+
+        @include breakpoint-up(large){
+            flex: 2;
+            order: 1;
+            text-align: left;
+          }
 
         h1 {
             font-weight: 300;
