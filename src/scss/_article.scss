@@ -8,7 +8,7 @@
 		//either 230px or 1 fr per column
 		//grid-template-columns:  repeat(auto-fit, minmax(14.375rem, 1fr));
 		grid-template-columns: 1fr; //1 fraction unit that takes up as much space as possible
-		gap: 1.875rem;
+		gap: 1.875rem; //30/16px
 
 		@include breakpoint-up(medium) {
 			//2 columns that are 1 fractional unit
@@ -26,9 +26,11 @@
 		overflow: hidden;
 		background-color: $white;
 		box-shadow: 0px 3px 12px rgba(0, 0, 0, 0.15);
+		//controls the speed and smoothness of animation
 		transition: all 150ms ease-in-out;
 
 		&:hover {
+			//animate on hover
 			transform: scale(1.05);
 		}
 	}
